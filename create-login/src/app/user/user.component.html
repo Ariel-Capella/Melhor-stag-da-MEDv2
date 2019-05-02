@@ -1,0 +1,16 @@
+<p>
+    lista de usuarios
+  </p>
+  <ul>
+    
+    <li *ngFor="let x of users">{{x.name}}
+        <button (click) = "onClick()" class="btn btn-primary">add friend</button>
+    </li>
+  
+  </ul>
+  <p>
+    lista de amigos
+  </p>
+  <ul>
+    <li *ngFor="let x of friends">{{x.IdFriends}}</li>
+  </ul>
