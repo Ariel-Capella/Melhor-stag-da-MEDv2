@@ -112,19 +112,7 @@ namespace WebApplication1.Controllers
 
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuarioItem(long id, UsuarioItem item)
-        {
-            if (id!= item.IdUser)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(item).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
+        
 
 
     }

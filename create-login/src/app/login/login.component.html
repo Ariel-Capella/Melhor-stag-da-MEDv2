@@ -1,21 +1,32 @@
+<head>
+    <link rel="button" type="text/css" href="../src/styles.css">
+    </head>
+
 <h2>Login</h2>
 <form [formGroup]="loginForm" (ngSubmit)="onClick">
 <div class="form-group">
-  <label for="username">Username</label>
+  <label for="username">Username<br></label>
   <input type="text" formControlName="username" class="form-control"/>
  
   </div>
   <div>
      
       <div class="form-group"> 
-    <label for="password">Password</label>
+        <br>
+    <label for="password">Password<br></label>
     <input type="password" formControlName="password" class="form-control"/>
     </div>
   </div>  
 
     <div class="form-group">
-      <button (click) = "onClick()" class="btn btn-primary">OK</button>
-      <a routerLink="/home" class="btn btn-link">Go to home</a>
+      <button (click) = "onClick()" class="button">OK</button>
+      <a routerLink="/home"  class="button">GO BIG OR GO HOME</a>
   </div>
 </form>
+
+
+
+
+
+
 

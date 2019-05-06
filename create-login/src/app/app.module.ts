@@ -11,7 +11,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './_services/user.service';
 import { HttpClientModule } from '@angular/common/http';
-import { UserComponent } from './user/user.component';
+
 
 const routes: Routes =
   [
@@ -29,7 +29,7 @@ const routes: Routes =
     RegisterComponent,
     LoginComponent,
     LoggedComponent,
-    UserComponent,
+   
     
   ],
   imports: [

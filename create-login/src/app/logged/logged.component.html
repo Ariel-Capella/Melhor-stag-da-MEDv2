@@ -4,7 +4,7 @@
 <ul>
     
   <li *ngFor="let x of users">{{ x.name }} - {{ x.idUser }}
-      <button (click) = "onClick(x.idUser)" class="btn btn-primary">add friend</button>
+      <button (click) = "onClick(x.idUser)" >add friend</button>
   </li>
 </ul>
 <p>
@@ -13,7 +13,7 @@
         lista de amigos
       </p>
       <ul>
-          <button (click) = "reload()" class="btn btn-primary">reload</button> 
+          <button (click) = "reload()" >reload</button> 
         <li *ngFor="let y of friends">{{y.idFriends}}  
           
         </li>

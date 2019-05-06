@@ -12096,11 +12096,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\MedRoom\\Desktop\\copias de seg\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "C:\\Users\\MedRoom\\Desktop\\copias de seg\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+      "projectPath": "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\MedRoom\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\MedRoom\\Desktop\\copias de seg\\WebApplication1\\WebApplication1\\obj\\",
+      "outputPath": "D:\\TodoApi\\WebApplication1\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
