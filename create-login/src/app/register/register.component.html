@@ -7,22 +7,26 @@
 <div class="form-group">
   <label for="username">Username<br></label>
   <input type="text" formControlName="username" />
+  <div *ngIf="!validation">invalid user name!</div>
+        </div>
  
-  </div>
+  
   <div>
      
-      <div class="form-group"> 
+      
         <br>
     <label for="Senha">Password<br></label>
     <input type="password" formControlName="password" />
+    <div *ngIf="!validation">invalid password!</div>
+        
     </div>
-  </div>  
+    
 
-    <div class="button">
+    
       
       <button (click) = "onClick()" >OK</button>
       <a routerLink="/login" class="button">Go to login</a>
-    </div>
+   
   
 </form>
 

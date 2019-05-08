@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "D:\\login task\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "D:\\login task\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "D:\\login task\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "D:\\TodoApi\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "D:\\login task\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\MedRoom\\.nuget\\packages\\",
-        "outputPath": "D:\\TodoApi\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "D:\\login task\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -5,11 +5,11 @@
     background-color: #4CAF50;
     border: black;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 14px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
   }
@@ -19,17 +19,17 @@
     background-color: #4CAF50;
     border: black;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 14px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     cursor: pointer;
   }
 
   i {
-    border-radius: 25px;
+    border-radius: 2px;
     background-color: #ff9900;
     border: black;
     color: #ffffff;

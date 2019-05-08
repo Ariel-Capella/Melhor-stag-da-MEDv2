@@ -11,6 +11,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './_services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FriendComponent } from './friend/friend.component';
 
 
 const routes: Routes =
@@ -29,6 +30,7 @@ const routes: Routes =
     RegisterComponent,
     LoginComponent,
     LoggedComponent,
+    FriendComponent,
    
     
   ],

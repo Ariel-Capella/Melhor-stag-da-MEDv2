@@ -3,10 +3,15 @@
 </p>
 <ul>
     
-  <li *ngFor="let x of users">{{ x.name }} - {{ x.idUser }}
-      <button (click) = "onClick(x.idUser)" >add friend</button>
+  <li *ngFor="let x of users; index as j" >
+
+      <friend [user] = "x"></friend>
+     
   </li>
 </ul>
+
+    
+    
 <p>
 
     <p>

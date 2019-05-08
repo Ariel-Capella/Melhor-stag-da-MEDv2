@@ -12,10 +12,13 @@ import { Router } from '@angular/router';
 export class LoggedComponent implements OnInit {
   users: User[];
   friends:  UserFriends[];
+  private isButtonVisible = true;
+  
   
   constructor(
-    private userService: UserService,
-    private router: Router
+    
+    private router: Router,
+    private userService: UserService
 
 
   ) {
@@ -41,15 +44,9 @@ export class LoggedComponent implements OnInit {
 }
 
   
-  onClick(IdFriends: number){
+  
 
-    this.userService.addFriend(IdFriends)
-    .subscribe(
-      data => {
-        
-      });
-
-  }
+  
 
   reload(){
     this.userService.userFriendList()

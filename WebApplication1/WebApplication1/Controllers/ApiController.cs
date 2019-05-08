@@ -73,11 +73,25 @@ namespace WebApplication1.Controllers
         [HttpPost("addFriend")]
         public async Task<ActionResult<List<UsuarioFriends>>> PostAddFriend(UsuarioFriends item)
         {
+            
             _context.UsuarioFriends.Add(item);
-            await _context.SaveChangesAsync();
-            var variavel1 = nameof(PostAddFriend);
-            var variavel2 = new { item.IdFriends };
-            return CreatedAtAction(variavel1, variavel2, item);
+            var temAmigo = await _context.UsuarioFriends.Where(ui => ui.IdFriends == item.IdFriends && ui.IdUser == item.IdUser).AnyAsync();
+
+            if (!temAmigo)
+            {
+                _context.UsuarioFriends.Add(item);
+                await _context.SaveChangesAsync();
+                var variavel1 = nameof(PostAddFriend);
+                var variavel2 = new { item.IdFriends };
+                return CreatedAtAction(variavel1, variavel2, item);
+
+            }
+            else
+            {
+                return Ok(false);
+            }
+           
+            
         }
 
 

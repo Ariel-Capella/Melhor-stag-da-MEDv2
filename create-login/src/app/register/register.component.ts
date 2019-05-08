@@ -11,7 +11,7 @@ import {User} from '../_models/user';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-
+  validation = true;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -33,6 +33,13 @@ export class RegisterComponent implements OnInit {
   }
   
   onClick(){
+    if (this.registerForm.invalid) {
+      this.validation = false;
+  }else{
+    this.validation = true;
+  }
+    
+  
     const user = new User();
     user.name = this.registerForm.controls['username'].value;
     user.senha = this.registerForm.controls['password'].value;
@@ -40,6 +47,9 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/login']);
+        },
+        error => {
+          window.alert('nope')
         });
     
   }
