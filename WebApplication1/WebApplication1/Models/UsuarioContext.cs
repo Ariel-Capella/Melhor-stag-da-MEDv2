@@ -11,7 +11,8 @@ namespace WebApplication1.Models
         }
 
         public DbSet<UsuarioItem> UsuarioItems { get; set; }
-        public DbSet<UsuarioFriends> UsuarioFriends{ get; set; }
+        public DbSet<UsuarioFriends> UsuarioFriends { get; set; }
+        public DbSet<FotoItem> FotoItem { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

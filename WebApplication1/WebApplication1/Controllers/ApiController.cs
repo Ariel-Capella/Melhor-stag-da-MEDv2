@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +25,33 @@ namespace WebApplication1.Controllers
             _context = context;
 
         }
+
+        // POST api/FOTO
+        [HttpPost("save")]
+        public async Task<ActionResult<FotoItem>> Post( [FromForm] IFormFile image)
+        {
+
+            if (ModelState.IsValid)
+            {
+                
+                var bolinha = new FotoItem();
+                using (var ms = new MemoryStream())
+                {
+                    image.CopyTo(ms);
+                    bolinha.Imagem = ms.ToArray();
+                    bolinha.Name = image.Name;
+                    
+                    
+                }
+
+                _context.FotoItem.Add(bolinha);
+                await _context.SaveChangesAsync();
+                return Ok();
+            }
+            return NoContent();
+        }
+
+    
 
         // GET: api/Usuario
         [HttpGet("userList/{IdUser}")]
