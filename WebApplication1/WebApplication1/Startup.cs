@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+//using login task.AspNetCore.NewDb.Models;
 using WebApplication1.Models;
 
 namespace WebApplication1
@@ -12,6 +13,7 @@ namespace WebApplication1
     {
         public Startup(IConfiguration configuration)
         {
+
             Configuration = configuration;
         }
 
@@ -20,10 +22,14 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsuarioContext>(opt =>
-                opt.UseInMemoryDatabase("BancoDados1"));
+           
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            var connection = @"Server=DESKTOP-3779IE1\SQLEXPRESS;Database=login task;Trusted_Connection=True;ConnectRetryCount=0";
+
+            services.AddDbContext<UsuarioContext>
+                (options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
