@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { detachProjectedView } from '@angular/core/src/view/view_attach';
 
 
 @Component({
@@ -9,21 +10,33 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class FileUploaderComponent implements OnInit {
 
-  selectedFile : File = null;
-  
+  private http : HttpClient;
+  private files : FileList;
+  public selectedFile : File;
+  public imagePath: any;
+  public imgURL : any
   constructor(
-    private http : HttpClient,
-  
-    ) { }
+    http : HttpClient,
+    
+    
+    
+    ) { 
+      this.http = http;
+      this.selectedFile = null;
+      
+    }
 
   ngOnInit() {
   }
 
   onFileSelected(event){
-    //console.log(event)
-    let files : FileList = event.target.files
+    
+    this.files = event.target.files
     this.selectedFile = event.target.files[0];
+    this.preview();
+
   }
+  
 
   onUpload(){
 
@@ -37,6 +50,21 @@ export class FileUploaderComponent implements OnInit {
       }
       );
 
+    
   }
 
+   preview(){
+      if(this.files.length == 0)
+     {
+        return;
+     }
+     var reader = new FileReader();
+      this.imagePath = this.files;
+     reader.readAsDataURL(this.files[0]);
+    reader.onload = (_event) =>
+     {
+       this.imgURL = reader.result;
+      }
+}
+ 
 }

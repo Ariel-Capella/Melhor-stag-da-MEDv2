@@ -14,6 +14,7 @@ import { FriendComponent } from './friend/friend.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 
+
 const routes: Routes =
   [
    { path: '', redirectTo: 'home', pathMatch: 'full' },

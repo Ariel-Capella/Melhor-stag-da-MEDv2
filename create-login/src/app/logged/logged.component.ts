@@ -36,7 +36,7 @@ export class LoggedComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 }
-  eload(){
+  reload(){
     this.userService.userFriendList()
       .subscribe(
         data => {
