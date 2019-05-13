@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 export class LoggedComponent implements OnInit {
   users: User[];
   friends:  UserFriends[];
-  private isButtonVisible = true;
-  
   
   constructor(
     
@@ -26,12 +24,8 @@ export class LoggedComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.userService.isLogged()){
-
-    
-    
-      
-    
+   if(this.userService.isLogged())
+    {
     this.userService.userList()
       .subscribe(
         data => {
@@ -42,13 +36,7 @@ export class LoggedComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 }
-
-  
-  
-
-  
-
-  reload(){
+  eload(){
     this.userService.userFriendList()
       .subscribe(
         data => {

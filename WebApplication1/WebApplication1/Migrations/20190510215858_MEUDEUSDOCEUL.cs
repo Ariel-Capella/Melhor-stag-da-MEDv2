@@ -9,24 +9,24 @@ namespace WebApplication1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "FotoItem",
+                name: "PhotoItem",
                 columns: table => new
                 {
-                    IdFoto = table.Column<long>(nullable: false)
+                    IdPhoto = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Imagem = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FotoItem", x => x.IdFoto);
+                    table.PrimaryKey("PK_PhotoItem", x => x.IdPhoto);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "FotoItem");
+                name: "PhotoItem");
         }
     }
 }

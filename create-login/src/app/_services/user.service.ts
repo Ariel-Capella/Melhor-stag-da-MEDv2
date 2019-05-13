@@ -82,5 +82,9 @@ userFriendList(){
 
    }
 
+   saveImage(formulario : FormData){
+    return this.http.post('http://localhost:56008/saveImage', formulario)
+}
+
 
 }

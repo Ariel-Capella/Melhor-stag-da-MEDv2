@@ -35,9 +35,9 @@ export class RegisterComponent implements OnInit {
   onClick(){
     if (this.registerForm.invalid) {
       this.validation = false;
-  }else{
+   }else{
     this.validation = true;
-  }
+   }
     
   
     const user = new User();

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApplication1.Models
 {
     [JsonObject]
-    public class UsuarioFriends
+    public class UserFriends
     { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +17,7 @@ namespace WebApplication1.Models
         [JsonProperty(PropertyName = "idFriends")]
         public long IdFriends { get; set; }
 
-        public virtual UsuarioItem UsuarioItem { get; set; }
+        public virtual UserItem UserItem { get; set; }
 
        
     }

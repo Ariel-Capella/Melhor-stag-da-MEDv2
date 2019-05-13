@@ -21,9 +21,9 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApplication1.Models.FotoItem", b =>
+            modelBuilder.Entity("WebApplication1.Models.PhotoItem", b =>
                 {
-                    b.Property<long>("IdFoto")
+                    b.Property<long>("IdPhoto")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -31,12 +31,12 @@ namespace WebApplication1.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("IdFoto");
+                    b.HasKey("IdPhoto");
 
-                    b.ToTable("FotoItem");
+                    b.ToTable("PhotoItem");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioFriends", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserFriends", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,10 +50,10 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("UsuarioFriends");
+                    b.ToTable("UserFriends");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioItem", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserItem", b =>
                 {
                     b.Property<long>("IdUser")
                         .ValueGeneratedOnAdd()
@@ -65,12 +65,12 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.ToTable("UsuarioItems");
+                    b.ToTable("UserItems");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioFriends", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserFriends", b =>
                 {
-                    b.HasOne("WebApplication1.Models.UsuarioItem", "UsuarioItem")
+                    b.HasOne("WebApplication1.Models.UserItem", "UserItem")
                         .WithMany("Friends")
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade);

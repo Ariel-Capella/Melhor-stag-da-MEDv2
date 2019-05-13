@@ -8,7 +8,7 @@ namespace WebApplication1.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UsuarioItems",
+                name: "UserItems",
                 columns: table => new
                 {
                     IdUser = table.Column<long>(nullable: false)
@@ -18,11 +18,11 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsuarioItems", x => x.IdUser);
+                    table.PrimaryKey("PK_UserItems", x => x.IdUser);
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsuarioFriends",
+                name: "UserFriends",
                 columns: table => new
                 {
                     Id = table.Column<long>(nullable: false)
@@ -32,28 +32,28 @@ namespace WebApplication1.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsuarioFriends", x => x.Id);
+                    table.PrimaryKey("PK_UserFriends", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UsuarioFriends_UsuarioItems_IdUser",
+                        name: "FK_UserFriends_UserItems_IdUser",
                         column: x => x.IdUser,
-                        principalTable: "UsuarioItems",
+                        principalTable: "UserItems",
                         principalColumn: "IdUser",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UsuarioFriends_IdUser",
-                table: "UsuarioFriends",
+                name: "IX_UserFriends_IdUser",
+                table: "UserFriends",
                 column: "IdUser");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UsuarioFriends");
+                name: "UserFriends");
 
             migrationBuilder.DropTable(
-                name: "UsuarioItems");
+                name: "UserItems");
         }
     }
 }

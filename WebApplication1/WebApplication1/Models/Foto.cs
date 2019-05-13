@@ -6,11 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
-    public class FotoItem
+    public class PhotoItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long IdFoto { get; set; }
+        public long IdPhoto { get; set; }
         public string Name { get; set; }
        
         public byte[] Imagem { get; set; }

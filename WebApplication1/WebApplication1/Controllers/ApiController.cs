@@ -7,7 +7,7 @@ using WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.IO;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,28 +23,24 @@ namespace WebApplication1.Controllers
         public ApiController(UsuarioContext context)
         {
             _context = context;
-
         }
 
-        // POST api/FOTO
+        // POST api/photo
         [HttpPost("save")]
-        public async Task<ActionResult<FotoItem>> Post( [FromForm] IFormFile image)
+        public async Task<ActionResult<PhotoItem>> Post( [FromForm] IFormFile image)
         {
 
             if (ModelState.IsValid)
-            {
-                
-                var bolinha = new FotoItem();
+            { 
+                var photo_item = new PhotoItem();
                 using (var ms = new MemoryStream())
                 {
                     image.CopyTo(ms);
-                    bolinha.Imagem = ms.ToArray();
-                    bolinha.Name = image.Name;
-                    
-                    
+                    photo_item.Imagem = ms.ToArray();
+                    photo_item.Name = image.Name;
                 }
 
-                _context.FotoItem.Add(bolinha);
+                _context.PhotoItem.Add(photo_item);
                 await _context.SaveChangesAsync();
                 return Ok();
             }
@@ -53,22 +49,22 @@ namespace WebApplication1.Controllers
 
     
 
-        // GET: api/Usuario
+        // GET: api/User
         [HttpGet("userList/{IdUser}")]
-        public async Task<ActionResult<IEnumerable<UsuarioItem>>> GetUserList(long IdUser )
+        public async Task<ActionResult<IEnumerable<UserItem
+            >>> GetUserList(long IdUser )
         {
-            return await _context.UsuarioItems.Where(ui => ui.IdUser != IdUser ).ToListAsync();
+            return await _context.UserItems.Where(ui => ui.IdUser != IdUser ).ToListAsync();
         }
 
-        // GET: amigos
+        // GET: friends
         [HttpGet("userFriendList/{IdUser}")]
-        public async Task<ActionResult<IEnumerable<UsuarioItem>>> GetUsuarioItem(long IdUser)
+        public async Task<ActionResult<IEnumerable<UserItem>>> GetUserItem(long IdUser)
         {
-            var query = from UsuarioItemVar in _context.UsuarioItems
-                        join usuarioFriendsVar in _context.UsuarioFriends on UsuarioItemVar.IdUser equals usuarioFriendsVar.IdUser
-                        where UsuarioItemVar.IdUser == IdUser
-                        select usuarioFriendsVar;
-
+            var query = from UserItemVar in _context.UserItems
+                        join UserFriendsVar in _context.UserFriends on UserItemVar.IdUser equals UserFriendsVar.IdUser
+                        where UserItemVar.IdUser == IdUser
+                        select UserFriendsVar;
             var resultado = await query.ToListAsync();
             return Ok(resultado);
 
@@ -76,7 +72,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost("post")]
-        public async Task<ActionResult<UsuarioItem>> PostUsuarioItem(UsuarioItem item)
+        public async Task<ActionResult<UserItem>> PostUserItem(UserItem item)
         {
 
             if (item.Senha == null)
@@ -92,28 +88,28 @@ namespace WebApplication1.Controllers
                 return BadRequest();
             }
 
-            _context.UsuarioItems.Add(item);
+            _context.UserItems.Add(item);
             await _context.SaveChangesAsync();
   
-            return CreatedAtAction(nameof(GetUsuarioItem), new { item.IdUser }, item);
+            return CreatedAtAction(nameof(GetUserItem), new { item.IdUser }, item);
 
 
         }
 
         [HttpPost("addFriend")]
-        public async Task<ActionResult<List<UsuarioFriends>>> PostAddFriend(UsuarioFriends item)
+        public async Task<ActionResult<List<UserFriends>>> PostAddFriend(UserFriends item)
         {
             
-            _context.UsuarioFriends.Add(item);
-            var temAmigo = await _context.UsuarioFriends.Where(ui => ui.IdFriends == item.IdFriends && ui.IdUser == item.IdUser).AnyAsync();
+            _context.UserFriends.Add(item);
+            var haveFriend = await _context.UserFriends.Where(ui => ui.IdFriends == item.IdFriends && ui.IdUser == item.IdUser).AnyAsync();
 
-            if (!temAmigo)
+            if (!haveFriend)
             {
-                _context.UsuarioFriends.Add(item);
+                _context.UserFriends.Add(item);
                 await _context.SaveChangesAsync();
-                var variavel1 = nameof(PostAddFriend);
-                var variavel2 = new { item.IdFriends };
-                return CreatedAtAction(variavel1, variavel2, item);
+                var var1 = nameof(PostAddFriend);
+                var var2 = new { item.IdFriends };
+                return CreatedAtAction(var1, var2, item);
 
             }
             else
@@ -130,25 +126,23 @@ namespace WebApplication1.Controllers
 
 
         [HttpPost("login")]
-        public async Task<ActionResult<UsuarioItem>> PostUsuarioLogin(UsuarioItem item)
+        
+        public async Task<ActionResult<UserItem>> PostUserLogin(UserItem item)
         {
-            var variavelQueVeioDoBanco = await _context.UsuarioItems.Where(ui => ui.Name == item.Name).FirstOrDefaultAsync();
+            var user_info = await _context.UserItems.Where(ui => ui.Name == item.Name).FirstOrDefaultAsync();
             
 
-            if (variavelQueVeioDoBanco.Name == null)
+            if (user_info.Name == null)
             {
                 return NotFound();
             }
-            else if(variavelQueVeioDoBanco.Senha != item.Senha)
+            else if(user_info.Senha != item.Senha)
             {
-
-
                 return NotFound();
-               
             }
             else
             {
-                return Ok( variavelQueVeioDoBanco.IdUser );
+                return Ok( user_info.IdUser );
             }
 
 

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './_services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FriendComponent } from './friend/friend.component';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
 
 const routes: Routes =
@@ -31,6 +31,7 @@ const routes: Routes =
     LoginComponent,
     LoggedComponent,
     FriendComponent,
+    FileUploaderComponent,
    
     
   ],

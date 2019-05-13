@@ -20,7 +20,7 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioFriends", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserFriends", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,10 +34,10 @@ namespace WebApplication1.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("UsuarioFriends");
+                    b.ToTable("UserFriends");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioItem", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserItem", b =>
                 {
                     b.Property<long>("IdUser")
                         .ValueGeneratedOnAdd()
@@ -49,12 +49,12 @@ namespace WebApplication1.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.ToTable("UsuarioItems");
+                    b.ToTable("UserItems");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.UsuarioFriends", b =>
+            modelBuilder.Entity("WebApplication1.Models.UserFriends", b =>
                 {
-                    b.HasOne("WebApplication1.Models.UsuarioItem", "UsuarioItem")
+                    b.HasOne("WebApplication1.Models.UserItem", "UserItem")
                         .WithMany("Friends")
                         .HasForeignKey("IdUser")
                         .OnDelete(DeleteBehavior.Cascade);

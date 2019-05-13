@@ -4,11 +4,13 @@
   </head>
 <h2>Register</h2>
 <form [formGroup]="registerForm" (ngSubmit)="onClick">
-<div class="form-group">
-  <label for="username">Username<br></label>
-  <input type="text" formControlName="username" />
-  <div *ngIf="!validation">invalid user name!</div>
-        </div>
+  <div class="form-group">
+    <label for="username">Username<br></label>
+    <input type="text" formControlName="username" />
+
+      <div *ngIf="!validation">invalid user name!</div>
+      
+  </div>
  
   
   <div>
