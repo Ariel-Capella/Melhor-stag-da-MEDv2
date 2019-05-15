@@ -22,6 +22,9 @@ namespace WebApplication1.Models
         [JsonProperty(PropertyName = "senha")]
         public string Senha { get; set; }
 
+        [JsonProperty(PropertyName = "Id_Photo")]
+        public long Id_Photo { get; set; }
+
         public virtual ICollection<UserFriends> Friends { get; set; }
 
     }

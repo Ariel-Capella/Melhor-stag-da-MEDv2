@@ -3,15 +3,19 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import {User} from '../_models/user';
 import { UserFriends } from '../_models/UsuarioFriends';
+import { PhotoItem } from '../_models/PhotoItem';
+
 
 
 @Injectable()
 export class UserService {
 
     public idUser: number;
+    public check_Current_Id : number;
     
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        
         
         ){}
 
@@ -44,6 +48,7 @@ login(username: string, password: string,){
     .pipe(
         tap((valueQueVeioDoServer) => {
             this.idUser = valueQueVeioDoServer;
+            this.check_Current_Id = valueQueVeioDoServer;
         })
     );
 
@@ -82,9 +87,18 @@ userFriendList(){
 
    }
 
-   saveImage(formulario : FormData){
-    return this.http.post('http://localhost:56008/saveImage', formulario)
-}
 
+  getImage(IdUser: number){
+
+      var Photo = new User();
+      Photo.idUser = IdUser;
+    //   const hheader = new HttpHeaders ().set('Accept', 'text/plain');
+
+    // const optionsObject = {
+    //     headers: hheader
+    // };
+
+      return this.http.post('http://localhost:49915/api/Api/Get_Photo', Photo, {observe: 'body', responseType: 'text' });
+  }
 
 }

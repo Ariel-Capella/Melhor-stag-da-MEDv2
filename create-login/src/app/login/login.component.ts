@@ -11,7 +11,7 @@ import { UserService, } from '../_services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   loginForm: FormGroup;
   validation = true;
 

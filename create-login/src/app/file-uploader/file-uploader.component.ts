@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { detachProjectedView } from '@angular/core/src/view/view_attach';
-
+import { UserService, } from '../_services/user.service';
 
 @Component({
   selector: 'file-uploader',
@@ -14,8 +14,12 @@ export class FileUploaderComponent implements OnInit {
   private files : FileList;
   public selectedFile : File;
   public imagePath: any;
-  public imgURL : any
+  public imgURL : any;
+  public check_Current_Id = this.userService.check_Current_Id;
+  
   constructor(
+
+    private userService : UserService,
     http : HttpClient,
     
     
@@ -42,6 +46,7 @@ export class FileUploaderComponent implements OnInit {
 
     const formulario = new FormData();
     formulario.append('image', this.selectedFile, this.selectedFile.name)
+    formulario.append('currentLoged', this.check_Current_Id.toString() )
     this.http.post('http://localhost:49915/api/Api/save/', formulario)
     .subscribe(
       data => {

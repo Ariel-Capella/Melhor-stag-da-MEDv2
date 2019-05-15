@@ -17,22 +17,26 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class ApiController : Controller
     {
+        
 
         private readonly UsuarioContext _context;
+        public UserItem check_Current_Id;
 
         public ApiController(UsuarioContext context)
         {
             _context = context;
+            
         }
 
         // POST api/photo
         [HttpPost("save")]
-        public async Task<ActionResult<PhotoItem>> Post( [FromForm] IFormFile image)
+        public async Task<ActionResult<PhotoItem>> Post([FromForm] IFormFile image, [FromForm] long currentLoged)
         {
 
             if (ModelState.IsValid)
-            { 
-                var photo_item = new PhotoItem();
+            {
+                var photo_item = new PhotoItem();               
+                
                 using (var ms = new MemoryStream())
                 {
                     image.CopyTo(ms);
@@ -42,19 +46,23 @@ namespace WebApplication1.Controllers
 
                 _context.PhotoItem.Add(photo_item);
                 await _context.SaveChangesAsync();
+
+                var receiver = _context.UserItems.Where(x => x.IdUser == currentLoged).FirstOrDefault();
+                receiver.Id_Photo = photo_item.IdPhoto;
+                await _context.SaveChangesAsync();
                 return Ok();
             }
             return NoContent();
         }
 
-    
+
 
         // GET: api/User
         [HttpGet("userList/{IdUser}")]
         public async Task<ActionResult<IEnumerable<UserItem
-            >>> GetUserList(long IdUser )
+            >>> GetUserList(long IdUser)
         {
-            return await _context.UserItems.Where(ui => ui.IdUser != IdUser ).ToListAsync();
+            return await _context.UserItems.Where(ui => ui.IdUser != IdUser).ToListAsync();
         }
 
         // GET: friends
@@ -68,7 +76,7 @@ namespace WebApplication1.Controllers
             var resultado = await query.ToListAsync();
             return Ok(resultado);
 
-            
+
         }
 
         [HttpPost("post")]
@@ -78,11 +86,11 @@ namespace WebApplication1.Controllers
             if (item.Senha == null)
             {
                 return BadRequest();
-            }  
-            else  if (item.Senha.Length < 4)
+            }
+            else if (item.Senha.Length < 4)
             {
                 return BadRequest();
-            } 
+            }
             else if (item.Name == null)
             {
                 return BadRequest();
@@ -90,7 +98,7 @@ namespace WebApplication1.Controllers
 
             _context.UserItems.Add(item);
             await _context.SaveChangesAsync();
-  
+
             return CreatedAtAction(nameof(GetUserItem), new { item.IdUser }, item);
 
 
@@ -99,7 +107,7 @@ namespace WebApplication1.Controllers
         [HttpPost("addFriend")]
         public async Task<ActionResult<List<UserFriends>>> PostAddFriend(UserFriends item)
         {
-            
+
             _context.UserFriends.Add(item);
             var haveFriend = await _context.UserFriends.Where(ui => ui.IdFriends == item.IdFriends && ui.IdUser == item.IdUser).AnyAsync();
 
@@ -116,8 +124,8 @@ namespace WebApplication1.Controllers
             {
                 return Ok(false);
             }
-           
-            
+
+
         }
 
 
@@ -126,32 +134,40 @@ namespace WebApplication1.Controllers
 
 
         [HttpPost("login")]
-        
+
         public async Task<ActionResult<UserItem>> PostUserLogin(UserItem item)
         {
             var user_info = await _context.UserItems.Where(ui => ui.Name == item.Name).FirstOrDefaultAsync();
-            
+           
 
             if (user_info.Name == null)
             {
                 return NotFound();
             }
-            else if(user_info.Senha != item.Senha)
+            else if (user_info.Senha != item.Senha)
             {
                 return NotFound();
             }
             else
             {
-                return Ok( user_info.IdUser );
+                return Ok(user_info.IdUser);
             }
-
-
-            
 
         }
 
-        
-
+        [HttpPost("Get_Photo")]
+        public async Task<ActionResult<PhotoItem>> Get_photo(UserItem item)
+        {
+            var user_info = await _context.UserItems.Where(ui => ui.IdUser == item.IdUser).FirstOrDefaultAsync();
+            var imgByte = await _context.PhotoItem.Where(info => info.IdPhoto == user_info.Id_Photo).FirstOrDefaultAsync();
+            var s = Convert.ToBase64String(imgByte.Imagem);
+            return Ok(s);
+        }
 
     }
+
+
+
+
 }
+
