@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+  button {
+    border-radius: 2px;
+    background-color: #4CAF50;
+    border: black;
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  a {
+    border-radius: 2px;
+    background-color: #4CAF50;
+    border: black;
+    color: white;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  i {
+    border-radius: 2px;
+    background-color: #ff9900;
+    border: black;
+    color: #ffffff;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  
+  

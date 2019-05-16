@@ -1,21 +1,36 @@
+
+ <file-uploader></file-uploader>
+
 <p>
   lista de usuarios
 </p>
 <ul>
     
-  <li *ngFor="let x of users">{{ x.name }} - {{ x.idUser }}
-      <button (click) = "onClick(x.idUser)" class="btn btn-primary">add friend</button>
+  <li *ngFor="let x of users; index as j" >
+
+      <friend [user] = "x"></friend>
+     
   </li>
 </ul>
+
+    
+    
 <p>
 
     <p>
         lista de amigos
       </p>
       <ul>
-          <button (click) = "reload()" class="btn btn-primary">reload</button> 
+          <button (click) = "reload()" >reload</button> 
         <li *ngFor="let y of friends">{{y.idFriends}}  
           
         </li>
       </ul>
       <p>
+
+        <div>
+          <button (click) = "get_image()" class="btn btn-primary">get image</button>
+          <img [src]='convertImage()' />         
+          
+
+        </div>

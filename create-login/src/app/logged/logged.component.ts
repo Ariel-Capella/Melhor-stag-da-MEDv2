@@ -1,21 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../_models/user';
+import { User } from '../_models/user';
 import { UserService, } from '../_services/user.service';
 import { UserFriends } from '../_models/UsuarioFriends';
 import { Router } from '@angular/router';
+import { PhotoItem } from '../_models/PhotoItem';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-logged',
   templateUrl: './logged.component.html',
   styleUrls: ['./logged.component.css']
+
 })
 export class LoggedComponent implements OnInit {
   users: User[];
-  friends:  UserFriends[];
-  
+  friends: UserFriends[];
+  Image_64_string: any;
+  Image: PhotoItem;
+
   constructor(
+
+    private router: Router,
     private userService: UserService,
-    private router: Router
+    private _sanitizer: DomSanitizer,
+
 
 
   ) {
@@ -23,40 +31,42 @@ export class LoggedComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.userService.isLogged()){
+    if (this.userService.isLogged()) {
+      this.userService.userList()
+        .subscribe(
+          data => {
+            this.users = data;
+          });
 
-    
-    
-      
-    
-    this.userService.userList()
-      .subscribe(
-        data => {
-          this.users = data;
-        });
-
-  }else{
-    this.router.navigate(['/login']);
-  }
+    } else {
+      this.router.navigate(['/login']);
+    }
 }
-
-  
-  onClick(IdFriends: number){
-
-    this.userService.addFriend(IdFriends)
-    .subscribe(
-      data => {
-        
-      });
-
-  }
-
-  reload(){
+  reload() {
     this.userService.userFriendList()
       .subscribe(
         data => {
           this.friends = data;
         });
+  }
+
+  get_image() {
+
+    var id = this.userService.check_Current_Id
+    this.userService.getImage(id)
+      .subscribe(
+
+        data => {
+          this.Image_64_string = data;
+
+        }
+      )
+  }
+
+  convertImage(): SafeUrl {
+
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.Image_64_string);
+
   }
 
 }

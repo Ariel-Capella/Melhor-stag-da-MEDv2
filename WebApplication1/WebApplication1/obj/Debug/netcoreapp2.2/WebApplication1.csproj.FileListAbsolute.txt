@@ -12,3 +12,17 @@ D:\TodoApi\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplicatio
 D:\TodoApi\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.RazorTargetAssemblyInfo.cache
 D:\TodoApi\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.dll
 D:\TodoApi\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.pdb
+D:\login task\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.2\WebApplication1.deps.json
+D:\login task\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.2\WebApplication1.runtimeconfig.json
+D:\login task\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.2\WebApplication1.runtimeconfig.dev.json
+D:\login task\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.2\WebApplication1.dll
+D:\login task\WebApplication1\WebApplication1\bin\Debug\netcoreapp2.2\WebApplication1.pdb
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.csprojAssemblyReference.cache
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.csproj.CoreCompileInputs.cache
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.RazorAssemblyInfo.cache
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.RazorAssemblyInfo.cs
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.AssemblyInfoInputs.cache
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.AssemblyInfo.cs
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.RazorTargetAssemblyInfo.cache
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.dll
+D:\login task\WebApplication1\WebApplication1\obj\Debug\netcoreapp2.2\WebApplication1.pdb

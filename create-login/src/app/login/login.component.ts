@@ -4,14 +4,16 @@ import { Router } from '@angular/router';
 import { UserService, } from '../_services/user.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  
   loginForm: FormGroup;
+  validation = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,12 +32,22 @@ export class LoginComponent implements OnInit {
   }
 
   onClick(){
+    
+    if (this.loginForm.invalid) {
+      this.validation = false;
+  }else{
+    this.validation = true;
+  }
+
     const userName = this.loginForm.controls['username'].value;
     const userPassword = this.loginForm.controls['password'].value;
     this.userService.login(userName, userPassword)
       .subscribe(
         data => {
           this.router.navigate(['/logged']);
+        },
+        error => {
+          window.alert('nope')
         });
     
   }

@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApplication1.Models
 {
     [JsonObject]
-    public class UsuarioItem
+    public class UserItem
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -22,7 +22,10 @@ namespace WebApplication1.Models
         [JsonProperty(PropertyName = "senha")]
         public string Senha { get; set; }
 
-        public virtual ICollection<UsuarioFriends> Friends { get; set; }
+        [JsonProperty(PropertyName = "Id_Photo")]
+        public long Id_Photo { get; set; }
+
+        public virtual ICollection<UserFriends> Friends { get; set; }
 
     }
 }
