@@ -164,6 +164,17 @@ namespace WebApplication1.Controllers
             return Ok(s);
         }
 
+        [HttpPost("Get_Photo2")]
+        public async Task<ActionResult<PhotoItem>> Get_photo2(UserItem item)
+        {
+            //var user_info = await _context.UserItems.Where(ui => ui.IdUser == item.IdUser).FirstOrDefaultAsync();
+            var imgByte = await _context.PhotoItem.Where(info => info.IdPhoto == item.Id_Photo).FirstOrDefaultAsync();
+            var s = Convert.ToBase64String(imgByte.Imagem);
+            return Ok(s);
+        }
+
+
+
     }
 
 

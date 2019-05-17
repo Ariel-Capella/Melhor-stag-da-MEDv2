@@ -1,4 +1,6 @@
 <div *ngIf='isVisible'>
 
-<button  type="button"  (click) = "onClick()"  >{{ user.name }}</button>  
+<button  type="button"  (click) = "onClick()"  >{{ user.name }} {{user.Id_Photo}}</button>  
+<button  type="button"  (click) = "onwatever()"  >mostrar imagem</button> 
+<img [src]='convertImage1()'  height="50"/>
 </div>

@@ -50,23 +50,17 @@ export class LoggedComponent implements OnInit {
         });
   }
 
-  get_image() {
-
-    var id = this.userService.check_Current_Id
-    this.userService.getImage(id)
-      .subscribe(
-
-        data => {
-          this.Image_64_string = data;
-
-        }
-      )
+  get_imagem(){
+    this.userService.get_image();
   }
 
   convertImage(): SafeUrl {
 
-    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.Image_64_string);
+    return this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + this.userService.Image_64_string);
 
   }
 
+  
 }
+
+

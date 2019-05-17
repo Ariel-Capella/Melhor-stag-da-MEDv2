@@ -47,7 +47,7 @@ export class FileUploaderComponent implements OnInit {
     const formulario = new FormData();
     formulario.append('image', this.selectedFile, this.selectedFile.name)
     formulario.append('currentLoged', this.check_Current_Id.toString() )
-    this.http.post('http://localhost:49915/api/Api/save/', formulario)
+    this.http.post('http://localhost:44346/api/Api/save/', formulario)
     .subscribe(
       data => {
 
